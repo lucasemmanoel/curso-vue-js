@@ -1,0 +1,114 @@
+html{
+    font-family: 'Montserrat', sans-serif;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
+.panel {
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+}
+
+.personagem{
+    text-align: center;
+}
+.personagem h1 {
+    font-weight: 300;
+}
+.areaJogador {
+    float: left;
+    width: 50%;
+}
+.areaMonstro {
+    width: 50%;
+    float: left;
+}
+.lutador {
+    margin-bottom: 20px;
+}
+.vida {
+    border: 1px solid black;
+    width: 98%;
+    height: 30px;
+}
+.saudavel {
+    background: green;
+}
+.atencao {
+    background: yellow;
+}
+.alerta {
+    background: red;
+}
+.saudeJogador, .saudeMonstro {
+    height: 100%;
+}
+.saudePersonagem {
+    margin-top: 20px;
+}
+.sucesso {
+    color: green;
+}
+.fracasso {
+    color: red;
+}
+
+.resultado {
+    display: flex;
+    font-weight: 600;
+    justify-content: center;
+}
+
+.botoes {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.grupo-botao {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.grupo-botao button {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #EEE;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.grupo-botao .iniciar {
+    background-color: #4253af;
+    color: #fff;
+}
+
+.grupo-botao .atacar {
+    background-color: #e51c23;
+    color: #fff;
+}
+
+.grupo-botao .ataque-especial {
+    background-color: #ff9800;
+    color: #000;
+}
+
+.grupo-botao .curar{
+    background-color: #259b24;
+    color: #fff;
+}
+
+.grupo-botao .desistir {
+    background-color: #bbb;
+    color: #000;
+}
+
+.logs .itens {
+    margin-bottom: 10px;
+}

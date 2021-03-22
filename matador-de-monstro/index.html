@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Matador de Monstro</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="panel arena">
+            <div id="jogador" class="personagem areaJogador">
+                <div class="lutador">
+                    <h1>{{ jogador.nome }}</h1>
+                    <div class="items">
+                        <div class="especial">
+                            Especial {{ jogador.especial }}
+                        </div>
+                        <div class="pocao">
+                            Poção: {{ jogador.pocao }}
+                        </div>
+                    </div>
+                </div>
+                <div class="vida">
+                    <div :class="['saudeJogador', statusSaudeJogador]" :style="{width:jogador.saude + '%'}"></div>
+                </div>
+                <div class="saudePersonagem">
+                    {{ jogador.saude }} / 100
+                </div>
+            </div>
+            <div id="monstro" class="personagem areaMonstro">
+                <div class="lutador">
+                    <h1>{{ monstro.nome }}</h1>
+                    <div class="items">
+                        <div>
+                            &nbsp;
+                        </div>
+                        <div>
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="vida">
+                    <div :class="['saudeMonstro', statusSaudeMonstro]" :style="{width:monstro.saude + '%'}"></div>
+                </div>
+                <div class="saudePersonagem">
+                    {{ monstro.saude }} / 100
+                </div>
+            </div>
+        </div>
+        <div v-if="temResultado" :class="['panel', 'resultado', {sucesso: jogadorGanhou}, {fracasso: monstroGanhou} ]">
+            <div v-if="jogadorGanhou" class="ganhou">
+                Você Ganhou!!!!
+            </div>
+            <div v-if="monstroGanhou" class="perdeu">
+                Você Perdeu!!!!
+            </div>
+            <div v-if="lutaEmpatada" class="empate">
+                Os dois cairam....
+            </div>
+        </div>
+        <div class="panel botoes">
+            <div v-if="!lutaIniciada" class="grupo-botao menu">
+                <button class="iniciar" @click="iniciarPartida">
+                    Iniciar No Jogo
+                </button>
+            </div>
+            <div v-if="lutaIniciada" class="grupo-botao acao">
+                <button class="atacar" @click="atacar">
+                    Ataque
+                </button>
+                <button class="ataque-especial" @click="usarEspecial">
+                    Ataque Especial
+                </button>
+                <button class="curar" @click="curar">
+                    Curar
+                </button>
+                <button class="desistir" @click="iniciarPartida">
+                    <template v-if="fimLuta">Reiniciar</template>
+                    <template v-else>Desistir</template>
+                </button>
+            </div>
+        </div>
+        <div v-if="logs.length" class="panel logs">
+            <div v-for="log in logs" class="itens">
+                <div>{{ log.jogador }}</div>
+                <div>{{ log.monstro }}</div>
+                <div v-if="log.cura !== ''">{{ log.cura }}</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="assets/app.js"></script>
